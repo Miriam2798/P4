@@ -1,0 +1,7 @@
+[options]
+prefix = /home/kdfau/PAV
+libdir = lib
+buildtype = release
+
+[properties]
+
