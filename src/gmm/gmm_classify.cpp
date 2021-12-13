@@ -29,7 +29,7 @@ int classify(const vector<GMM> &vgmm, const fmatrix &dat, float &maxlprob) {
   //for each gmm, call logprob. Implement this function in gmm.cpp
   //DONE
   for (int i = 0; i < vgmm.size(); i++) {
-    lprob = vgmm[i].logprob();
+    lprob = vgmm[i].logprob(dat);
     if (maxlprob <= lprob) {
       maxlprob = lprob;
       maxind = i;
