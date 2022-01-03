@@ -91,11 +91,30 @@ compute_lp() {
     shift
     for filename in $(sort $*); do #Hi havia cat, sort per a que surtin ordenats per pantalla
         mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
-        EXEC="wav2lp 8 $db_sen/$filename.wav $w/$FEAT/$filename.$FEAT"
+        EXEC="wav2lp 14 $db_sen/$filename.wav $w/$FEAT/$filename.$FEAT"
         echo $EXEC && $EXEC || exit 1
     done
 }
 
+compute_lpcc(){
+    db_sen=$1
+    shift
+    for filename in $(sort $*); do
+        mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
+        EXEC="wav2lpcc 15 14 $db_sen/$filename.wav $w/$FEAT/$filename.$FEAT"
+        echo $EXEC && $EXEC || exit 1
+    done
+}
+
+compute_mfcc(){
+    db_sen=$1
+    shift
+    for filename in $(sort $*); do
+        mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
+        EXEC="wav2mfcc 16 20 8 $db_sen/$filename.wav $w/$FEAT/$filename.$FEAT" #order, nfilters, frequency
+        echo $EXEC && $EXEC || exit 1
+    done
+}
 
 #  Set the name of the feature (not needed for feature extraction itself)
 if [[ ! -n "$FEAT" && $# > 0 && "$(type -t compute_$1)" = function ]]; then

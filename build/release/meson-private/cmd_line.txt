@@ -2,6 +2,7 @@
 prefix = /home/miriam27/PAV
 libdir = lib
 buildtype = release
+backend = ninja
 
 [properties]
 
