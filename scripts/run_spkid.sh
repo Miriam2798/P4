@@ -149,7 +149,7 @@ for cmd in $*; do
        # echo "Implement the trainworld option ..."
        # \DONE 
         gmm_train -v 1 -T 0.001 -N 200 -i 1  -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
-
+        
    elif [[ $cmd == verify ]]; then
        ## @file
 	   # \TODO 
