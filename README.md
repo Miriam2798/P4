@@ -32,39 +32,126 @@ ejercicios indicados.
 - Analice el script `wav2lp.sh` y explique la misión de los distintos comandos involucrados en el *pipeline*
   principal (`sox`, `$X2X`, `$FRAME`, `$WINDOW` y `$LPC`). Explique el significado de cada una de las 
   opciones empleadas y de sus valores.
-
+  
+  ![image](https://user-images.githubusercontent.com/91891272/147960946-55e1bb01-ab01-43e5-beb5-eccd086aecc1.png)
+  
+  `sox`: Es un comando para trabajar con archivos de audio. En este caso se utiliza para conervtir una señal 
+         de audio WAVE a una señal de audio RAW, es decir, sin cabeceras. Se usa el '-t' para indicar el formato
+         de salida, -e para el tipo de dato de codificación (signed) y -b para indicar el número de bits por cada 
+         muestra(16 bits). 
+         Es un comando con muchas otras opciones.
+         
+  `$X2X`: Es un programa de SPTK. Permite convertir datos de una entrada estandard a otro tipo de datos, dando el 
+          resultado en una salida estándard. Con otras opciones se pueden cambiar los formatos de entrada y salida.
+          En nuestro caso, con +sf, estamos convirtiendo la entrada short en float. 
+          
+  `$FRAME`: También es un programa de SPTK. Separa la señal de entrada en tramas de un formato y longitud determinados. 
+            Con -l se especifica la longitud de la trama y con -p el período. Es decir, en este caso tenemos una trama de
+            240 muestras con un período de 80 muestras.
+            
+  `$WINDOW`: También es un programa de SPTK. Su función es enventanar una secuencia de datos. Multiplica elemento a 
+             elemento una longitud (-l) de la señal de entrada por una ventana específica, sacando el resultado
+             en una salida estándard con una longitud determinada (-L).
+             En este caso la longitud de la señal de entrada son 240 muestras y 240 muestras de la señal de salida. 
+             La ventana aplicada es de Blackman, que es la que viene dada por defecto. 
+             
+  `$LPC`: También es un programa de SPTK. Calcula los coeficientes de predicción lineal(LPC) de los datos de entrada
+          previamente enventanados, divididos en tramas y de longitud l, enviando el resultado a una salida
+          estándard. 
+          En este caso la longitud es 240 muestras y el orden del lpc (-m) es el que guardamos en la variable lpc_order.
+          
+          
 - Explique el procedimiento seguido para obtener un fichero de formato *fmatrix* a partir de los ficheros de
   salida de SPTK (líneas 45 a 47 del script `wav2lp.sh`).
+  
+    ![image](https://user-images.githubusercontent.com/91891272/147961153-4a351f3b-2456-4093-826d-e1cb725aff0d.png)
 
+    La línea 46 se corresponde con la obtención del número de columnas de la matriz, en este caso se corresponde
+    con el orden del LPC + 1, débido a que el primer valor es la ganancia. 
+    
+    En la línea 47 obtenemos el número de filas de la matriz. Primero convertimos el archivo temporal de float a ASCII, 
+    con 'wc -l' obtenemos el número de líneas del archivo en ASCII.
+    Con perl se imprimen las líneas con el formato de fmatrix.    
+    
   * ¿Por qué es conveniente usar este formato (u otro parecido)? Tenga en cuenta cuál es el formato de
     entrada y cuál es el de resultado.
-
+    
+    Es un formato conveniente porque permite la visualización de los datos de forma clara y ordenada. 
+    Nos proporciona información sobre el número de tramas y coeficientes.
+    También permite seleccionar los datos y guardar los que nos interesan, por ejemplo con la función
+    fmatrix_show. 
+    
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
   (LPCC) en su fichero <code>scripts/wav2lpcc.sh</code>:
+    
+    ![image](https://user-images.githubusercontent.com/91891272/147963332-24f7984d-431d-45f3-b91f-fcbe977b5fcf.png)
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en su
   fichero <code>scripts/wav2mfcc.sh</code>:
+    
+    ![image](https://user-images.githubusercontent.com/91891272/147963445-88378a8a-d48c-41c6-8e8f-00f7317e1e23.png)
+
 
 ### Extracción de características.
 
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
   para todas las señales de un locutor.
   
+    ![image](https://user-images.githubusercontent.com/91891272/147968993-8af4f57a-a23c-4ab9-bd73-c843808142bf.png)
+
+    ![image](https://user-images.githubusercontent.com/91891272/147969019-76afaba4-d166-4ba2-a340-1a08784f6a7f.png)
+
+    ![image](https://user-images.githubusercontent.com/91891272/147970065-5d55c86d-8fa7-4551-b4f3-d7edf3d42ea1.png)
+
+
   + Indique **todas** las órdenes necesarias para obtener las gráficas a partir de las señales 
     parametrizadas.
+    
+    ![comando fmatrix_lp](https://user-images.githubusercontent.com/91891272/147964408-794b1adb-05cf-478b-8729-54e7d3622062.png)
+    ![comando fmatrix_lpcc y mfcc](https://user-images.githubusercontent.com/91891272/147964438-3e098a9e-b83d-4b79-bad3-10af21076e6b.png)
+    
+    
   + ¿Cuál de ellas le parece que contiene más información?
-
+    
+    Observamos tres gráficas, la del LP hace una forma 'lineal', la del LPCC es dispersa y la del MFCC es aún más dispersa.
+    La información es proporcional a la entropía lo cual nos hace pensar que la gráfica que contiene mayor información
+    es la menos predictiva por tanto la que contiene mayor información es la gráfica del MFCC. 
+    
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.
 
+  Para obtener los ficheros ejecutamos la siguiente orden:
+  
+  ![comando pearson](https://user-images.githubusercontent.com/91891272/147964522-3d88fd6d-ab68-48a1-87f7-0f5454f18b58.png)
+  
+  Para el LP obtenemos: 
+  
+  ![ro 2 3  lp(pearson)](https://user-images.githubusercontent.com/91891272/147963953-be75f104-9ca5-4a2c-810b-4082edbc7926.png)
+
+  Para el LPCC obtenemos: 
+  
+  ![ro 2 3  lpcc(pearson)](https://user-images.githubusercontent.com/91891272/147963996-fed2355f-4655-4d94-a164-512d4be8c1a2.png)
+
+  Para el MFCC obtenemos:
+  
+  ![ro 2 3  mfcc(pearson)](https://user-images.githubusercontent.com/91891272/147964030-c91a5c50-7a9c-4775-ac66-f12f117069a2.png)
+
+
   |                        | LP   | LPCC | MFCC |
   |------------------------|:----:|:----:|:----:|
-  | &rho;<sub>x</sub>[2,3] |      |      |      |
+  | &rho;<sub>x</sub>[2,3] |-0,87 | 0,18 |-0,22 |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
   
+    Observamos que los coeficientes obtenidos por Pearson más incorrelados son el LPCC y el MFCC. 
+    Esto se reafirma con las gráficas, pues vemos que las gráficas de estos coeficientes son más dispersas que la 
+    del LP. 
+    
+    
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
 
+  Según la teoría para el LPCC se recomienda utilizar 13 coeficientes, al igual que para el MFCC. 
+  Para el MFCC se suelen usar entre 24 y 40 filtros. 
 ### Entrenamiento y visualización de los GMM.
 
 Complete el código necesario para entrenar modelos GMM.
