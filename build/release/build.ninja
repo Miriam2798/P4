@@ -30,7 +30,7 @@ rule CUSTOM_COMMAND
  restat = 1
 
 rule REGENERATE_BUILD
- command = /usr/bin/meson --internal regenerate /home/kdfau/PAV/P4 /home/kdfau/PAV/P4/build/release --backend ninja
+ command = /usr/bin/meson --internal regenerate /home/miriam27/PAV/P4 /home/miriam27/PAV/P4/build/release --backend ninja
  description = Regenerating build files.
  generator = 1
 
@@ -76,87 +76,87 @@ build src/25a6634@@gmm_classify@exe/gmm_gmm_classify.cpp.o: cpp_COMPILER ../../s
  ARGS = -Isrc/25a6634@@gmm_classify@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/gmm_classify: cpp_LINKER src/25a6634@@gmm_classify@exe/gmm_gmm_classify.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@gmm_show@exe/gmm_gmm_show.cpp.o: cpp_COMPILER ../../src/gmm/gmm_show.cpp
  DEPFILE = src/25a6634@@gmm_show@exe/gmm_gmm_show.cpp.o.d
  ARGS = -Isrc/25a6634@@gmm_show@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/gmm_show: cpp_LINKER src/25a6634@@gmm_show@exe/gmm_gmm_show.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@gmm_train@exe/gmm_gmm_train.cpp.o: cpp_COMPILER ../../src/gmm/gmm_train.cpp
  DEPFILE = src/25a6634@@gmm_train@exe/gmm_gmm_train.cpp.o.d
  ARGS = -Isrc/25a6634@@gmm_train@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/gmm_train: cpp_LINKER src/25a6634@@gmm_train@exe/gmm_gmm_train.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@gmm_verify@exe/gmm_gmm_verify.cpp.o: cpp_COMPILER ../../src/gmm/gmm_verify.cpp
  DEPFILE = src/25a6634@@gmm_verify@exe/gmm_gmm_verify.cpp.o.d
  ARGS = -Isrc/25a6634@@gmm_verify@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/gmm_verify: cpp_LINKER src/25a6634@@gmm_verify@exe/gmm_gmm_verify.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@pearson@exe/pearson_pearson.cpp.o: cpp_COMPILER ../../src/pearson/pearson.cpp
  DEPFILE = src/25a6634@@pearson@exe/pearson_pearson.cpp.o.d
  ARGS = -Isrc/25a6634@@pearson@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/pearson: cpp_LINKER src/25a6634@@pearson@exe/pearson_pearson.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o: cpp_COMPILER ../../src/fmatrix/fmatrix_cut.cpp
  DEPFILE = src/25a6634@@fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o.d
  ARGS = -Isrc/25a6634@@fmatrix_cut@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/fmatrix_cut: cpp_LINKER src/25a6634@@fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
 build src/25a6634@@fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o: cpp_COMPILER ../../src/fmatrix/fmatrix_show.cpp
  DEPFILE = src/25a6634@@fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o.d
  ARGS = -Isrc/25a6634@@fmatrix_show@exe -Isrc -I../../src -I../../src/include -I../../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3
 
 build src/fmatrix_show: cpp_LINKER src/25a6634@@fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o | /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libsndfile.a /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28 src/pav/libpav.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/kdfau/PAV/P4/build/release/src/pav
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group '-Wl,-rpath,$$ORIGIN/pav' -Wl,-rpath-link,/home/miriam27/PAV/P4/build/release/src/pav
 
-build scripts/run_spkid: CUSTOM_COMMAND /home/kdfau/PAV/P4/scripts/run_spkid.sh
- COMMAND = ln -sf /home/kdfau/PAV/P4/scripts/run_spkid.sh /home/kdfau/PAV/bin/run_spkid
+build scripts/run_spkid: CUSTOM_COMMAND /home/miriam27/PAV/P4/scripts/run_spkid.sh
+ COMMAND = ln -sf /home/miriam27/PAV/P4/scripts/run_spkid.sh /home/miriam27/PAV/bin/run_spkid
  description = Generating$ run_spkid.sh$ with$ a$ custom$ command.
 
-build scripts/plot_gmm_feat: CUSTOM_COMMAND /home/kdfau/PAV/P4/scripts/plot_gmm_feat.py
- COMMAND = ln -sf /home/kdfau/PAV/P4/scripts/plot_gmm_feat.py /home/kdfau/PAV/bin/plot_gmm_feat
+build scripts/plot_gmm_feat: CUSTOM_COMMAND /home/miriam27/PAV/P4/scripts/plot_gmm_feat.py
+ COMMAND = ln -sf /home/miriam27/PAV/P4/scripts/plot_gmm_feat.py /home/miriam27/PAV/bin/plot_gmm_feat
  description = Generating$ plot_gmm_feat.py$ with$ a$ custom$ command.
 
-build scripts/spk_verif_score: CUSTOM_COMMAND /home/kdfau/PAV/P4/scripts/spk_verif_score.pl
- COMMAND = ln -sf /home/kdfau/PAV/P4/scripts/spk_verif_score.pl /home/kdfau/PAV/bin/spk_verif_score
+build scripts/spk_verif_score: CUSTOM_COMMAND /home/miriam27/PAV/P4/scripts/spk_verif_score.pl
+ COMMAND = ln -sf /home/miriam27/PAV/P4/scripts/spk_verif_score.pl /home/miriam27/PAV/bin/spk_verif_score
  description = Generating$ spk_verif_score.pl$ with$ a$ custom$ command.
 
-build scripts/wav2lp: CUSTOM_COMMAND /home/kdfau/PAV/P4/scripts/wav2lp.sh
- COMMAND = ln -sf /home/kdfau/PAV/P4/scripts/wav2lp.sh /home/kdfau/PAV/bin/wav2lp
+build scripts/wav2lp: CUSTOM_COMMAND /home/miriam27/PAV/P4/scripts/wav2lp.sh
+ COMMAND = ln -sf /home/miriam27/PAV/P4/scripts/wav2lp.sh /home/miriam27/PAV/bin/wav2lp
  description = Generating$ wav2lp.sh$ with$ a$ custom$ command.
 
 build doc: phony meson-doc
 
 build meson-doc: CUSTOM_COMMAND 
- COMMAND = /usr/bin/meson --internal commandrunner /home/kdfau/PAV/P4 /home/kdfau/PAV/P4/build/release src/doxyfile /usr/bin/meson /usr/bin/doxygen /home/kdfau/PAV/P4/build/release/src/doxyfile/Doxyfile
+ COMMAND = /usr/bin/meson --internal commandrunner /home/miriam27/PAV/P4 /home/miriam27/PAV/P4/build/release src/doxyfile /usr/bin/meson /usr/bin/doxygen /home/miriam27/PAV/P4/build/release/src/doxyfile/Doxyfile
  description = Running$ external$ command$ doc.
  pool = console
 
-build pav_spkid_pytorch/make_spk2idx: CUSTOM_COMMAND /home/kdfau/PAV/P4/pav_spkid_pytorch/make_spk2idx.py
- COMMAND = ln -sf /home/kdfau/PAV/P4/pav_spkid_pytorch/make_spk2idx.py /home/kdfau/PAV/bin/make_spk2idx
+build pav_spkid_pytorch/make_spk2idx: CUSTOM_COMMAND /home/miriam27/PAV/P4/pav_spkid_pytorch/make_spk2idx.py
+ COMMAND = ln -sf /home/miriam27/PAV/P4/pav_spkid_pytorch/make_spk2idx.py /home/miriam27/PAV/bin/make_spk2idx
  description = Generating$ make_spk2idx.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/test_nn: CUSTOM_COMMAND /home/kdfau/PAV/P4/pav_spkid_pytorch/test_nn.py
- COMMAND = ln -sf /home/kdfau/PAV/P4/pav_spkid_pytorch/test_nn.py /home/kdfau/PAV/bin/test_nn
+build pav_spkid_pytorch/test_nn: CUSTOM_COMMAND /home/miriam27/PAV/P4/pav_spkid_pytorch/test_nn.py
+ COMMAND = ln -sf /home/miriam27/PAV/P4/pav_spkid_pytorch/test_nn.py /home/miriam27/PAV/bin/test_nn
  description = Generating$ test_nn.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/train_nn: CUSTOM_COMMAND /home/kdfau/PAV/P4/pav_spkid_pytorch/train_nn.py
- COMMAND = ln -sf /home/kdfau/PAV/P4/pav_spkid_pytorch/train_nn.py /home/kdfau/PAV/bin/train_nn
+build pav_spkid_pytorch/train_nn: CUSTOM_COMMAND /home/miriam27/PAV/P4/pav_spkid_pytorch/train_nn.py
+ COMMAND = ln -sf /home/miriam27/PAV/P4/pav_spkid_pytorch/train_nn.py /home/miriam27/PAV/bin/train_nn
  description = Generating$ train_nn.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/utils: CUSTOM_COMMAND /home/kdfau/PAV/P4/pav_spkid_pytorch/utils.py
- COMMAND = ln -sf /home/kdfau/PAV/P4/pav_spkid_pytorch/utils.py /home/kdfau/PAV/bin/utils
+build pav_spkid_pytorch/utils: CUSTOM_COMMAND /home/miriam27/PAV/P4/pav_spkid_pytorch/utils.py
+ COMMAND = ln -sf /home/miriam27/PAV/P4/pav_spkid_pytorch/utils.py /home/miriam27/PAV/bin/utils
  description = Generating$ utils.py$ with$ a$ custom$ command.
 
 # Test rules
@@ -204,7 +204,7 @@ build all: phony src/pav/libpav.a src/gmm_classify src/gmm_show src/gmm_train sr
 build clean: phony meson-clean
 
 build meson-clean-ctlist: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/meson --internal cleantrees /home/kdfau/PAV/P4/build/release/meson-private/cleantrees.dat
+ COMMAND = /usr/bin/meson --internal cleantrees /home/miriam27/PAV/P4/build/release/meson-private/cleantrees.dat
  description = Cleaning$ custom$ target$ directories.
 
 build clean-ctlist: phony meson-clean-ctlist

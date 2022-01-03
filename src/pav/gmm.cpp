@@ -113,7 +113,7 @@ namespace upc {
     for (n=0; n<data.nrow(); ++n) {
       /// \TODO Compute the logprob of a single frame of the input data; you can use gmm_logprob() above.
       /// \DONE
-      lprob = lprob + gmm_logprob(data[n]);
+      lprob +=gmm_logprob(data[n]);
     }    
     return lprob/n;
   }
@@ -220,6 +220,8 @@ namespace upc {
 
       if (verbose & 01)
 	cout << "GMM nmix=" << nmix << "\tite=" << iteration << "\tlog(prob)=" << new_prob << "\tinc=" << inc_prob << endl;
+    
+      if (fabs(inc_prob) < inc_threshold) return 0;
     }
     return 0;
   }
