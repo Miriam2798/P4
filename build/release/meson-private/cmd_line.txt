@@ -1,8 +1,7 @@
 [options]
-prefix = /home/miriam27/PAV
+prefix = /home/kdfau/PAV
 libdir = lib
 buildtype = release
-backend = ninja
 
 [properties]
 
