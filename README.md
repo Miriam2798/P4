@@ -159,9 +159,36 @@ Complete el código necesario para entrenar modelos GMM.
 - Inserte una gráfica que muestre la función de densidad de probabilidad modelada por el GMM de un locutor
   para sus dos primeros coeficientes de MFCC.
   
+  Para el locutor 015:
+  
+  ![gmm mfcc 1](https://user-images.githubusercontent.com/91891272/148435949-547b2151-4bba-45fa-8ac3-ee210cbb052b.png)
+
 - Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica
   de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad
   del modelado GMM para diferenciar las señales de uno y otro.
+  
+  Primero observamos la gráfica del modelo del locutor 015 con el locutor 015:
+  
+  ![gmm mfcc 2](https://user-images.githubusercontent.com/91891272/148436140-afc08bfe-2de0-4060-a6d5-ac5b19e11d4f.png)
+  
+  Ahora vemos lo que sucede si cambiamos el locutor por el 000: 
+  
+  ![gmm mfcc 3(locutor ses000)](https://user-images.githubusercontent.com/91891272/148436335-8b38d1ab-d5e7-46bb-8737-411cf8e4e8e1.png)
+
+  Para seguir comparando ahora vemos el modelo del 000 con el locutor 000: 
+  
+  ![gmm mfcc ses00 con el ses00](https://user-images.githubusercontent.com/91891272/148436469-034e2e8f-66a1-4b4a-9d61-3d06ba2e1054.png)
+
+  Y finalmente el modelo del locutor 000 con el locutor 015: 
+  
+  ![gmm mfcc ses00 con el ses015](https://user-images.githubusercontent.com/91891272/148436566-b2f9c8c1-c1a4-46df-9f9d-19a40eaa3a63.png)
+
+  Como vemos cuando tenemos un locutor diferente al modelo vemos que los puntos no siguen la misma norma de las gaussianas que se pueden ver. 
+  En el caso del modelo 015 con el locutor 000 vemos que el centro de la segunda gaussiana esta más abajo que el del modelo y tiene más puntos 
+  dispersos a la derecha que se salen de la gaussiana del modelo. 
+  Cuando el modelo del 000 se corresponde con el locutor 000 vemos que los puntos estan bastante centrados dentro del modelo mientras que
+  cuando cambiamos de locutor vemos que los puntos estan más desplazados y ergo menos centrados.
+  
 
 ### Reconocimiento del locutor.
 
@@ -169,7 +196,25 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
 
 - Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos
   SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.
+  
+  Para el LP:
+  ![LP con VQ 67gauss 20 iteraciones](https://user-images.githubusercontent.com/91891272/148437791-63f2c9b0-3970-4ccd-944a-00bd05634183.png)
+  
+  Para el LPCC: 
+  ![LPCC con VQ 67gauss 20 iteraciones](https://user-images.githubusercontent.com/91891272/148437881-e8d670de-bd78-4024-bde7-248133b2bd18.png)
 
+  Para el MFCC: 
+  ![image](https://user-images.githubusercontent.com/91891272/148438280-06adbb10-9e0b-49bc-933f-da84bc2fc761.png)
+
+ 
+  |              | LP   | LPCC | MFCC |
+  |--------------|:----:|:----:|:----:|
+  | Tasa de error|8,92% |1,66% |1,40% |
+  
+  ![image](https://user-images.githubusercontent.com/91891272/148437974-f547cff6-bcb2-4373-abb5-4744b3b14dab.png)
+
+  Para obtener estos valores hemos utilizado 20 iteraciones, 67 gaussianas, inicialización VQ y un umbral de 0,001.
+  
 ### Verificación del locutor.
 
 Complete el código necesario para realizar verificación del locutor y optimice sus parámetros.
@@ -179,6 +224,16 @@ Complete el código necesario para realizar verificación del locutor y optimice
   pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea
   de reconocimiento.
  
+  Debido a los resultados del apartado anterior, en este apartado utilizamos MFCC. 
+  Utilizando 60 gaussianas, 20 iteraciones, inicialización VQ y un umbral de 0,001 obtenemos los siguientes resultados: 
+  
+  ![image](https://user-images.githubusercontent.com/91891272/148440427-c609c80b-88a4-4c55-ac99-649f6c3219dd.png)
+
+  |              |        Umbral       | Perdidas | Falsas Alarmas | Coste |
+  |--------------|:-------------------:|:--------:|:--------------:|:-----:|
+  |     MFCC     | 0.0902300705533964  |  17/250  |     2/1000     |  8,6  |
+  
+  
 ### Test final
 
 - Adjunte, en el repositorio de la práctica, los ficheros `class_test.log` y `verif_test.log` 
