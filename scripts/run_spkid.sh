@@ -145,7 +145,7 @@ for cmd in $*; do
        for dir in $db/BLOCK*/SES* ; do
            name=${dir/*\/}
            echo $name ----
-           gmm_train  -v 1 -T 0.001 -N5 -m 2 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$name.gmm $lists/class/$name.train || exit 1 #el 0.001 pot ser massa i tot
+           gmm_train  -v 1 -T 0.001 -i 1 -N 20 -m 67 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$name.gmm $lists/class/$name.train || exit 1 #el 0.001 pot ser massa i tot
            echo
        done
    elif [[ $cmd == test ]]; then
@@ -170,7 +170,7 @@ for cmd in $*; do
 	   # - The name of the world model will be used by gmm_verify in the 'verify' command below.
        # echo "Implement the trainworld option ..."
        # \DONE 
-        gmm_train -v 1 -T 0.001 -N 200 -i 1  -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
+        gmm_train -v 1 -T 0.001 -N 20 -i 1 -m 60 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
         
    elif [[ $cmd == verify ]]; then
        ## @file
@@ -215,7 +215,7 @@ for cmd in $*; do
        compute_$FEAT $db_final $lists/final/verif.test
        gmm_verify -d $w/$FEAT -e $FEAT -D $w/gmm/$FEAT -E gmm -w world $lists/final/verif.users $lists/final/verif.test $lists/final/verif.test.candidates | tee $w/verif_final.log
        perl -ane 'print "$F[0]\t$F[1]\t";
-                  if ($F[2] > 0.158565767863324) {print "1\n"}
+                  if ($F[2] > 0.0902300705533964) {print "1\n"}
                   else {print "0\n"}' $w/verif_final.log | tee verif_final.log
    
    # If the command is not recognize, check if it is the name
