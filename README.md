@@ -198,12 +198,15 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
   SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.
   
   Para el LP:
+  
   ![LP con VQ 67gauss 20 iteraciones](https://user-images.githubusercontent.com/91891272/148437791-63f2c9b0-3970-4ccd-944a-00bd05634183.png)
   
   Para el LPCC: 
+  
   ![LPCC con VQ 67gauss 20 iteraciones](https://user-images.githubusercontent.com/91891272/148437881-e8d670de-bd78-4024-bde7-248133b2bd18.png)
 
   Para el MFCC: 
+  
   ![image](https://user-images.githubusercontent.com/91891272/148438280-06adbb10-9e0b-49bc-933f-da84bc2fc761.png)
 
  
